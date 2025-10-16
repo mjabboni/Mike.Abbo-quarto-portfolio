@@ -1,0 +1,47 @@
+---
+title: "Simple Matplotlib Graph"
+format: html
+execute:
+  echo: true
+---
+
+## Introduction
+
+This document demonstrates a simple matplotlib graph rendered using Quarto.
+
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Create sample data
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Create the plot
+plt.figure(figsize=(7, 4.75))
+plt.plot(x, y, 'b-', linewidth=2, label='sin(x)')
+plt.xlabel('X values')
+plt.ylabel('Y values')
+plt.title('My First Matplotlib Chart')
+plt.grid(True, alpha=0.3)
+plt.legend()
+plt.show()
+```
+
+```{python}
+# Sample data for bar chart
+categories = ['A', 'B', 'C', 'D', 'E']
+values = [23, 45, 56, 78, 32]
+
+plt.figure(figsize=(7, 4.75))
+bars = plt.bar(categories, values, color=['red', 'green', 'blue', 'orange', 'purple'])
+plt.xlabel('Categories')
+plt.ylabel('Values')
+plt.title('Sample Bar Chart')
+
+# Add value labels on bars
+for bar, value in zip(bars, values):
+    plt.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1.7, 
+             str(value), ha='center', va='bottom')
+plt.show()
+```
